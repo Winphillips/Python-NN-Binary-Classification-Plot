@@ -18,6 +18,30 @@ This is a simple implementation of a neural network training algorithm in Python
 - `_update_parameters(derror_dbias, derror_dweights)`: A private method of the `NeuralNetwork` class that updates the parameters (bias and weights) of the neural network based on the computed gradients.
 - `train(input_vectors, targets, iterations)`: A method of the `NeuralNetwork` class that trains the neural network using the provided input vectors and target values for a specified number of iterations, and returns the cumulative error over iterations.
 
+## Example Usage
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Define input vectors and targets
+input_vectors = np.array([[3, 1.5], [2, 1], [4, 1.5], [3, 4], [3.5, 0.5], [2, 0.5], [5.5, 1], [1, 1]])
+targets = np.array([0, 1, 0, 1, 0, 1, 1, 0])
+
+# Set learning rate and create neural network instance
+learning_rate = 0.1
+neural_network = NeuralNetwork(learning_rate)
+
+# Train the neural network
+training_error = neural_network.train(input_vectors, targets, 10000)
+
+# Plot the training error over iterations
+plt.plot(training_error)
+plt.xlabel("Iterations")
+plt.ylabel("Error for all training instances")
+plt.savefig("cumulative_error.png")
+```
+
 ## Plot Examples
 
 Below are examples of the cumulative error plot with different learning rates:
